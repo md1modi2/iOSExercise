@@ -77,12 +77,13 @@
 		273D276A2555AD540052ABF6 /* Wipro */ = {
 			isa = PBXGroup;
 			children = (
-				273D276B2555AD540052ABF6 /* AppDelegate.swift */,
-				273D276F2555AD540052ABF6 /* ViewController.swift */,
-				273D27712555AD540052ABF6 /* Main.storyboard */,
-				273D27742555AD550052ABF6 /* Assets.xcassets */,
-				273D27762555AD550052ABF6 /* LaunchScreen.storyboard */,
-				273D27792555AD550052ABF6 /* Info.plist */,
+				273D278D2555AE420052ABF6 /* Core */,
+				273D278E2555AE530052ABF6 /* Scenes */,
+				273D27942555AE9F0052ABF6 /* NetworkService */,
+				273D27932555AE920052ABF6 /* HelperClass */,
+				273D27902555AE700052ABF6 /* Storyboards */,
+				273D27912555AE7F0052ABF6 /* Resources */,
+				273D27922555AE8B0052ABF6 /* SupportedFiles */,
 			);
 			path = Wipro;
 			sourceTree = "<group>";
@@ -94,6 +95,77 @@
 				273D27842555AD550052ABF6 /* Info.plist */,
 			);
 			path = WiproTests;
+			sourceTree = "<group>";
+		};
+		273D278D2555AE420052ABF6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				273D276B2555AD540052ABF6 /* AppDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		273D278E2555AE530052ABF6 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				273D278F2555AE5E0052ABF6 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		273D278F2555AE5E0052ABF6 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				273D276F2555AD540052ABF6 /* ViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		273D27902555AE700052ABF6 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				273D27712555AD540052ABF6 /* Main.storyboard */,
+				273D27762555AD550052ABF6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		273D27912555AE7F0052ABF6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				273D27952555AEB90052ABF6 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		273D27922555AE8B0052ABF6 /* SupportedFiles */ = {
+			isa = PBXGroup;
+			children = (
+				273D27792555AD550052ABF6 /* Info.plist */,
+			);
+			path = SupportedFiles;
+			sourceTree = "<group>";
+		};
+		273D27932555AE920052ABF6 /* HelperClass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HelperClass;
+			sourceTree = "<group>";
+		};
+		273D27942555AE9F0052ABF6 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		273D27952555AEB90052ABF6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				273D27742555AD550052ABF6 /* Assets.xcassets */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
