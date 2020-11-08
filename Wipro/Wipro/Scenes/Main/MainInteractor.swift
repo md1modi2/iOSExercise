@@ -18,6 +18,8 @@ class MainInteractor: MainBusinessLogic {
     
     // MARK: Presenter Business Logic
     
+    /// This method will call the API through Worker Class and pass the response to presenter to present data or error
+    /// - Parameter request: Facts API request - If there is any parameter then it will be pass through this request model
     func getFacts(request: Main.Facts.Request) {
         worker = MainWorker()
         worker?.doGetFactsAPI(request: request, completionHandler: { [weak self] (response, error) in

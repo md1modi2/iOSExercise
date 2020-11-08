@@ -24,7 +24,7 @@ enum CommonRouter: RouterProtocol {
     var path: String {
         switch self {
         case .getFacts:
-            return ""
+            return "facts.json"
         }
     }
     

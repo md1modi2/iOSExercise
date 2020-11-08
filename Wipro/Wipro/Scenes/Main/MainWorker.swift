@@ -9,8 +9,10 @@
 import UIKit
 
 class MainWorker {
-    func doSomeWork() {
-    }
+    
+    /// This method will call the network service to fetch the data and convert response to relative generic model
+    /// - Parameter request: API Request Model -  It will contains the request parameter values to generate http body through Router Class - CommonRouter
+    /// - Parameter completionHandler: Closure method will get response from Network service and pass back to interactor
     func doGetFactsAPI(request: Main.Facts.Request, completionHandler: @escaping (Main.Facts.ViewModel?, Error?) -> Void) {
         let router = CommonRouter.getFacts
         NetworkService.dataRequest(with: router) { (response, error) in

@@ -11,4 +11,5 @@ import Foundation
 struct MessageConstants {
     static let NetworkError = NSLocalizedString("Server is not responding! Please try after sometime.", comment: "")
     static let URLError = NSLocalizedString("Unable to create url", comment: "")
+    static let NoInternet = NSLocalizedString("Internet is not available", comment: "")
 }

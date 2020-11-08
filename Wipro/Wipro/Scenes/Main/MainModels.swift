@@ -23,7 +23,7 @@ enum Main {
                 case title = "title"
             }
             required init(from decoder: Decoder) throws {
-                super.init()
+                try super.init(from: decoder)
                 let values = try decoder.container(keyedBy: CodingKeys.self)
                 rows = try values.decodeIfPresent([Row].self, forKey: .rows)
                 title = try values.decodeIfPresent(String.self, forKey: .title)

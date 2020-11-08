@@ -29,7 +29,7 @@ public extension RouterProtocol {
         var request = URLRequest(url: url.appendingPathComponent(path))
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = self.headers
-        request.timeoutInterval = 60.0
+        request.timeoutInterval = 30.0
         do {
             let req = try URLEncoding.default.encode(request as URLRequestConvertible, with: parameters)
             return req

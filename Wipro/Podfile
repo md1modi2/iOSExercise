@@ -4,14 +4,22 @@
 target 'Wipro' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'Alamofire', '~> 4.9.1'
   # Pods for Wipro
+
+  # Network Service
+  pod 'Alamofire', '~> 4.9.1'
+
+  # Image Downlaod and Caching
+  pod 'Kingfisher'
+  
+  # Snackbar to show success or fail Messages
+  pod 'SwiftMessages', '6.0.0'
 
   target 'WiproTests' do
     inherit! :search_paths
     # Pods for testing
     pod 'Alamofire', '~> 4.9.1'
-	
+    pod 'Kingfisher'
   end
 
 end
