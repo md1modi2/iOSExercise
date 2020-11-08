@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
     lazy private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = .clear
-        refreshControl.tintColor = UIColor.black
+        refreshControl.tintColor = UIColor.gray
         refreshControl.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
         return refreshControl
     }()
