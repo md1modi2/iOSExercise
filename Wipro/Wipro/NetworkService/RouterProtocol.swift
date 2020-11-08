@@ -43,3 +43,18 @@ public extension RouterProtocol {
         return nil
     }
 }
+
+public class WSResponse: Codable {
+    
+    init() {
+        
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        
+    }
+    
+    required public init(from decoder: Decoder) throws {
+        
+    }
+}

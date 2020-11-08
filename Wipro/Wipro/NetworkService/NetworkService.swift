@@ -22,7 +22,7 @@ class NetworkService {
         return sessionManager
     }()
     
-    static func dataRequest<Model: Codable>(with inputRequest: RouterProtocol, completionHandler: @escaping (Model?, Error?) -> Void) {
+    static func dataRequest<Model: WSResponse>(with inputRequest: RouterProtocol, completionHandler: @escaping (Model?, Error?) -> Void) {
         do {
             _ = try inputRequest.asURLRequest()
         } catch {
