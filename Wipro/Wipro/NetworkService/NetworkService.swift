@@ -9,6 +9,13 @@
 import Foundation
 import Alamofire
 
+struct NetworkState {
+    var isInternetAvailable:Bool
+    {
+        return NetworkReachabilityManager()!.isReachable
+    }
+}
+
 class NetworkService {
     private init() {}
     
@@ -22,11 +29,19 @@ class NetworkService {
         return sessionManager
     }()
     
+    /// This method will call API with the help of Alamofire and get the response and convert response to Provided Generic Model
+    /// - Parameter inputRequest: URLRequestConvertible extended object which will include url, paramaeters and headers
+    /// - Parameter completionHandler: It will resturn response to worker with Generic Model and Error
     static func dataRequest<Model: WSResponse>(with inputRequest: RouterProtocol, completionHandler: @escaping (Model?, Error?) -> Void) {
         do {
             _ = try inputRequest.asURLRequest()
         } catch {
             completionHandler(nil, NSError.customError(with: 300, message: MessageConstants.NetworkError))
+            return
+        }
+        
+        if NetworkState().isInternetAvailable == false {
+            completionHandler(nil, NSError.customError(with: 300, message: MessageConstants.NoInternet))
             return
         }
                 
@@ -46,8 +61,8 @@ class NetworkService {
                     let result = response.result
                     let error = result.error as NSError?
                     
-                    if let data = response.data {
-                        print("Response :: ", String(data: data, encoding: .utf8) ?? "")
+                    if let responseData = response.data, let ascii = String(data: responseData, encoding: .ascii), let data = ascii.data(using: .utf8) {
+                        print("Response :: ", ascii)
                         do {
                             let decoder = JSONDecoder()
                             let decodedValue = try decoder.decode(Model.self, from: data)
