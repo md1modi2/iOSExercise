@@ -12,6 +12,9 @@ target 'Wipro' do
   # Image Downlaod and Caching
   pod 'Kingfisher'
   
+  # Empty Data View
+  pod 'EmptyDataSet-Swift'
+  
   # Snackbar to show success or fail Messages
   pod 'SwiftMessages', '6.0.0'
 

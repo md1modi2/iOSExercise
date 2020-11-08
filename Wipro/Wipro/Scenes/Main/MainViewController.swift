@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
     
     // MARK: View lifecycle
     
-    @IBOutlet private weak var tblView: UITableView!
+    @IBOutlet weak var tblView: UITableView!
     lazy private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = .clear
@@ -100,7 +100,7 @@ class MainViewController: UIViewController {
     // MARK: IBActions
     
     /// This action will perform the pull to refresh action and call the API
-    @IBAction private func doRefresh() {
+    @IBAction func doRefresh() {
         doGetFacts()
     }
     
@@ -112,9 +112,9 @@ class MainViewController: UIViewController {
             self.navigationItem.title = "Loading..."
             interactor?.getFacts(request: Main.Facts.Request())
         } else {
-            self.navigationItem.title = "Pull To Refresh"
             AppUtility.showToastMessage(MessageConstants.NoInternet, isSuccess: false)
             endRefreshing()
+            configureEmptyDataSet()
         }
     }
 }
@@ -141,11 +141,12 @@ extension MainViewController : MainDisplayLogic {
         }
         tblView.reloadData()
         endRefreshing()
+        configureEmptyDataSet()
     }
     
     func displayError(error: Error?) {
         endRefreshing()
-        self.navigationItem.title = "Pull To Refresh"
         AppUtility.showToastMessage(error?.localizedDescription, isSuccess: false)
+        configureEmptyDataSet()
     }
 }
