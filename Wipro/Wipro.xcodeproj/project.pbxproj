@@ -8,18 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		271345EC255826A90062C1B3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271345EB255826A90062C1B3 /* NetworkService.swift */; };
-		271345EE2558459F0062C1B3 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271345ED2558459F0062C1B3 /* RouterProtocol.swift */; };
 		271345F1255847E30062C1B3 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271345F0255847E30062C1B3 /* Error+Extension.swift */; };
 		271345F4255848F90062C1B3 /* MessageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271345F3255848F90062C1B3 /* MessageConstants.swift */; };
 		271345F6255849770062C1B3 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271345F5255849770062C1B3 /* AppConstants.swift */; };
-		2733790825584DDF001FE2E8 /* CommonRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790725584DDF001FE2E8 /* CommonRouter.swift */; };
-		2733790F25584F9A001FE2E8 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790925584F9A001FE2E8 /* MainPresenter.swift */; };
-		2733791025584F9A001FE2E8 /* MainWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790A25584F9A001FE2E8 /* MainWorker.swift */; };
-		2733791225584F9A001FE2E8 /* MainModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790C25584F9A001FE2E8 /* MainModels.swift */; };
+		27328E3D256629C000660B51 /* WSCalls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27328E3C256629C000660B51 /* WSCalls.swift */; };
+		27328E442566397200660B51 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27328E432566397200660B51 /* NetworkService.swift */; };
+		27328E4525663AC700660B51 /* WSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A425654E5D006395A0 /* WSResponse.swift */; };
+		27328E4625663AC700660B51 /* FactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A625654F20006395A0 /* FactsModel.swift */; };
+		27328E4725663AC700660B51 /* FactRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A825654F5F006395A0 /* FactRowModel.swift */; };
 		2733791325584F9A001FE2E8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790D25584F9A001FE2E8 /* MainViewController.swift */; };
-		2733791425584F9A001FE2E8 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733790E25584F9A001FE2E8 /* MainInteractor.swift */; };
 		2733791925585A95001FE2E8 /* FactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733791725585A95001FE2E8 /* FactCell.swift */; };
-		2733791A25585A95001FE2E8 /* FactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2733791825585A95001FE2E8 /* FactCell.xib */; };
 		2733791D25586CDB001FE2E8 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2733791C25586CDB001FE2E8 /* AppUtility.swift */; };
 		273D276C2555AD540052ABF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D276B2555AD540052ABF6 /* AppDelegate.swift */; };
 		273D27732555AD540052ABF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273D27712555AD540052ABF6 /* Main.storyboard */; };
@@ -28,6 +26,10 @@
 		273D27832555AD550052ABF6 /* WiproTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D27822555AD550052ABF6 /* WiproTests.swift */; };
 		277409812558790C001D423D /* MainViewController+EmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277409802558790C001D423D /* MainViewController+EmptyDataSet.swift */; };
 		2774098325587963001D423D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2774098225587963001D423D /* Extensions.swift */; };
+		27C6E2A525654E5D006395A0 /* WSResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A425654E5D006395A0 /* WSResponse.swift */; };
+		27C6E2A725654F20006395A0 /* FactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A625654F20006395A0 /* FactsModel.swift */; };
+		27C6E2A925654F5F006395A0 /* FactRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2A825654F5F006395A0 /* FactRowModel.swift */; };
+		27C6E2AB25655AFD006395A0 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E2AA25655AFD006395A0 /* NetworkReachabilityManager.swift */; };
 		5F67495BB7054D0272EAE8D9 /* Pods_WiproTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E4A38117CA7A2E0A1F8B35 /* Pods_WiproTests.framework */; };
 		C1821E313A61E34612715079 /* Pods_Wipro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1156467CB19FE9CB1D0B8688 /* Pods_Wipro.framework */; };
 /* End PBXBuildFile section */
@@ -46,18 +48,13 @@
 		1156467CB19FE9CB1D0B8688 /* Pods_Wipro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wipro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12830D41BF2D53994DB05D39 /* Pods-WiproTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproTests.release.xcconfig"; path = "Target Support Files/Pods-WiproTests/Pods-WiproTests.release.xcconfig"; sourceTree = "<group>"; };
 		271345EB255826A90062C1B3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		271345ED2558459F0062C1B3 /* RouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocol.swift; sourceTree = "<group>"; };
 		271345F0255847E30062C1B3 /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		271345F3255848F90062C1B3 /* MessageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageConstants.swift; sourceTree = "<group>"; };
 		271345F5255849770062C1B3 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
-		2733790725584DDF001FE2E8 /* CommonRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRouter.swift; sourceTree = "<group>"; };
-		2733790925584F9A001FE2E8 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		2733790A25584F9A001FE2E8 /* MainWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWorker.swift; sourceTree = "<group>"; };
-		2733790C25584F9A001FE2E8 /* MainModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModels.swift; sourceTree = "<group>"; };
+		27328E3C256629C000660B51 /* WSCalls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSCalls.swift; sourceTree = "<group>"; };
+		27328E432566397200660B51 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		2733790D25584F9A001FE2E8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		2733790E25584F9A001FE2E8 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		2733791725585A95001FE2E8 /* FactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCell.swift; sourceTree = "<group>"; };
-		2733791825585A95001FE2E8 /* FactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactCell.xib; sourceTree = "<group>"; };
 		2733791C25586CDB001FE2E8 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		273D27682555AD540052ABF6 /* Wipro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wipro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		273D276B2555AD540052ABF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +67,10 @@
 		273D27842555AD550052ABF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277409802558790C001D423D /* MainViewController+EmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+EmptyDataSet.swift"; sourceTree = "<group>"; };
 		2774098225587963001D423D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		27C6E2A425654E5D006395A0 /* WSResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSResponse.swift; sourceTree = "<group>"; };
+		27C6E2A625654F20006395A0 /* FactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModel.swift; sourceTree = "<group>"; };
+		27C6E2A825654F5F006395A0 /* FactRowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactRowModel.swift; sourceTree = "<group>"; };
+		27C6E2AA25655AFD006395A0 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		66E4A38117CA7A2E0A1F8B35 /* Pods_WiproTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiproTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68CACA88F690F706307C15E9 /* Pods-WiproTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiproTests.debug.xcconfig"; path = "Target Support Files/Pods-WiproTests/Pods-WiproTests.debug.xcconfig"; sourceTree = "<group>"; };
 		856ADC8F8BDF0A6EA41121CB /* Pods-Wipro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wipro.release.xcconfig"; path = "Target Support Files/Pods-Wipro/Pods-Wipro.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				2733791725585A95001FE2E8 /* FactCell.swift */,
-				2733791825585A95001FE2E8 /* FactCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -126,6 +126,7 @@
 		2733791B25586CB1001FE2E8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				27C6E2AA25655AFD006395A0 /* NetworkReachabilityManager.swift */,
 				2733791C25586CDB001FE2E8 /* AppUtility.swift */,
 			);
 			path = Utilities;
@@ -155,7 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				273D278D2555AE420052ABF6 /* Core */,
-				273D278E2555AE530052ABF6 /* Scenes */,
+				27C6E2A325654E0E006395A0 /* Models */,
+				273D278E2555AE530052ABF6 /* ViewControllers */,
 				273D27942555AE9F0052ABF6 /* NetworkService */,
 				273D27932555AE920052ABF6 /* HelperClass */,
 				273D27902555AE700052ABF6 /* Storyboards */,
@@ -170,6 +172,7 @@
 			children = (
 				273D27822555AD550052ABF6 /* WiproTests.swift */,
 				273D27842555AD550052ABF6 /* Info.plist */,
+				27328E432566397200660B51 /* NetworkService.swift */,
 			);
 			path = WiproTests;
 			sourceTree = "<group>";
@@ -182,23 +185,19 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		273D278E2555AE530052ABF6 /* Scenes */ = {
+		273D278E2555AE530052ABF6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				273D278F2555AE5E0052ABF6 /* Main */,
 			);
-			path = Scenes;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		273D278F2555AE5E0052ABF6 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				2733791625585A80001FE2E8 /* Cells */,
-				2733790925584F9A001FE2E8 /* MainPresenter.swift */,
-				2733790A25584F9A001FE2E8 /* MainWorker.swift */,
-				2733790C25584F9A001FE2E8 /* MainModels.swift */,
 				2733790D25584F9A001FE2E8 /* MainViewController.swift */,
-				2733790E25584F9A001FE2E8 /* MainInteractor.swift */,
 				277409802558790C001D423D /* MainViewController+EmptyDataSet.swift */,
 			);
 			path = Main;
@@ -243,8 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				271345EB255826A90062C1B3 /* NetworkService.swift */,
-				271345ED2558459F0062C1B3 /* RouterProtocol.swift */,
-				2733790725584DDF001FE2E8 /* CommonRouter.swift */,
+				27328E3C256629C000660B51 /* WSCalls.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -255,6 +253,16 @@
 				273D27742555AD550052ABF6 /* Assets.xcassets */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		27C6E2A325654E0E006395A0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				27C6E2A425654E5D006395A0 /* WSResponse.swift */,
+				27C6E2A625654F20006395A0 /* FactsModel.swift */,
+				27C6E2A825654F5F006395A0 /* FactRowModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		44CF42B96F0E71F886D61BF5 /* Pods */ = {
@@ -365,7 +373,6 @@
 				273D27782555AD550052ABF6 /* LaunchScreen.storyboard in Resources */,
 				273D27752555AD550052ABF6 /* Assets.xcassets in Resources */,
 				273D27732555AD540052ABF6 /* Main.storyboard in Resources */,
-				2733791A25585A95001FE2E8 /* FactCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,21 +472,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				2733791D25586CDB001FE2E8 /* AppUtility.swift in Sources */,
+				27C6E2A725654F20006395A0 /* FactsModel.swift in Sources */,
+				27C6E2AB25655AFD006395A0 /* NetworkReachabilityManager.swift in Sources */,
 				2733791925585A95001FE2E8 /* FactCell.swift in Sources */,
 				2733791325584F9A001FE2E8 /* MainViewController.swift in Sources */,
 				277409812558790C001D423D /* MainViewController+EmptyDataSet.swift in Sources */,
 				271345EC255826A90062C1B3 /* NetworkService.swift in Sources */,
-				271345EE2558459F0062C1B3 /* RouterProtocol.swift in Sources */,
 				271345F4255848F90062C1B3 /* MessageConstants.swift in Sources */,
-				2733791425584F9A001FE2E8 /* MainInteractor.swift in Sources */,
-				2733790F25584F9A001FE2E8 /* MainPresenter.swift in Sources */,
+				27328E3D256629C000660B51 /* WSCalls.swift in Sources */,
 				271345F6255849770062C1B3 /* AppConstants.swift in Sources */,
 				273D276C2555AD540052ABF6 /* AppDelegate.swift in Sources */,
 				2774098325587963001D423D /* Extensions.swift in Sources */,
 				271345F1255847E30062C1B3 /* Error+Extension.swift in Sources */,
-				2733791225584F9A001FE2E8 /* MainModels.swift in Sources */,
-				2733791025584F9A001FE2E8 /* MainWorker.swift in Sources */,
-				2733790825584DDF001FE2E8 /* CommonRouter.swift in Sources */,
+				27C6E2A925654F5F006395A0 /* FactRowModel.swift in Sources */,
+				27C6E2A525654E5D006395A0 /* WSResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +493,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27328E442566397200660B51 /* NetworkService.swift in Sources */,
+				27328E4625663AC700660B51 /* FactsModel.swift in Sources */,
+				27328E4525663AC700660B51 /* WSResponse.swift in Sources */,
+				27328E4725663AC700660B51 /* FactRowModel.swift in Sources */,
 				273D27832555AD550052ABF6 /* WiproTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
