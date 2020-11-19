@@ -12,7 +12,8 @@ class MainViewController: UIViewController {
     
     // MARK: View lifecycle
     
-    @IBOutlet weak var tblView: UITableView!
+    let tblView = UITableView()
+    
     lazy private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.backgroundColor = .clear
@@ -20,6 +21,7 @@ class MainViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
         return refreshControl
     }()
+    
     var arrFacts: [FactRowModel] = [FactRowModel]()
     
     override func viewDidLoad() {
@@ -34,11 +36,23 @@ class MainViewController: UIViewController {
     
     /// This method is use to setup the initial configuration for viewcontroller and tableview
     private func initialSetup() {
-        tblView.register(FactCell.cellNib, forCellReuseIdentifier: FactCell.cellIdentifier)
+        
+        tblView.translatesAutoresizingMaskIntoConstraints = false
+        tblView.register(FactCell.self, forCellReuseIdentifier: FactCell.cellIdentifier)
         tblView.tableFooterView = UIView()
         tblView.dataSource = self
         tblView.delegate = self
+        tblView.estimatedRowHeight = 66
         addPullToRefresh()
+        view.addSubview(tblView)
+        
+        // setting constraints for the TableView
+        NSLayoutConstraint.activate([
+            tblView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            tblView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tblView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            tblView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0)
+        ])
     }
     
     /// This method will add refresh control to tableview
@@ -73,18 +87,40 @@ class MainViewController: UIViewController {
     private func doGetFacts() {
         if NetworkState().isInternetAvailable == true {
             self.navigationItem.title = "Loading..."
-            interactor?.getFacts(request: Main.Facts.Request())
+            callGetFactsWS()
         } else {
             AppUtility.showToastMessage(MessageConstants.NoInternet, isSuccess: false)
             endRefreshing()
             configureEmptyDataSet()
         }
     }
+    
+    func callGetFactsWS() {
+        WSCalls.callGetFactsWS(onSuccess: { [weak self] (response) in
+            guard let weakSelf = self else {return}
+            if let arrayRows = response?.rows {
+                weakSelf.arrFacts = arrayRows
+            }
+            DispatchQueue.main.async {
+                weakSelf.navigationItem.title = response?.title
+                weakSelf.tblView.reloadData()
+                weakSelf.endRefreshing()
+                weakSelf.configureEmptyDataSet()
+            }
+        }, onError: { (error) in
+            AppUtility.showToastMessage(error?.localizedDescription, isSuccess: false)
+        })
+    }
+    
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrFacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,23 +129,5 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource {
         }
         cell.setContent(model: arrFacts[indexPath.row])
         return cell
-    }
-}
-
-extension MainViewController : MainDisplayLogic {
-    func displayFacts(viewModel: Main.Facts.ViewModel) {
-        self.navigationItem.title = viewModel.title
-        if let arrayRows = viewModel.rows {
-            self.arrFacts = arrayRows
-        }
-        tblView.reloadData()
-        endRefreshing()
-        configureEmptyDataSet()
-    }
-    
-    func displayError(error: Error?) {
-        endRefreshing()
-        AppUtility.showToastMessage(error?.localizedDescription, isSuccess: false)
-        configureEmptyDataSet()
     }
 }
