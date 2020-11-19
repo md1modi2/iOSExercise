@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 struct NetworkState {
     var isInternetAvailable:Bool
@@ -17,66 +16,53 @@ struct NetworkState {
 }
 
 class NetworkService {
-    private init() {}
     
-    static let boundaryConstant = "aRandomBoundary2637542"
+    static let shared: NetworkService = NetworkService()
     
-    private static let manager: SessionManager = { () -> SessionManager in
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        let sessionManager = SessionManager(configuration: configuration)
-        return sessionManager
-    }()
-    
-    /// This method will call API with the help of Alamofire and get the response and convert response to Provided Generic Model
-    /// - Parameter inputRequest: URLRequestConvertible extended object which will include url, paramaeters and headers
-    /// - Parameter completionHandler: It will resturn response to worker with Generic Model and Error
-    static func dataRequest<Model: WSResponse>(with inputRequest: RouterProtocol, completionHandler: @escaping (Model?, Error?) -> Void) {
-        do {
-            _ = try inputRequest.asURLRequest()
-        } catch {
-            completionHandler(nil, NSError.customError(with: 300, message: MessageConstants.NetworkError))
+    func sendRequestWithUrl<Model: WSResponse>(url: String, method: String = "GET", param: [String: Any]? = nil, headers: [String: String]? = nil, completionHandler: @escaping (Model?, Error?) -> Void) {
+        
+        guard let requestUrl = URL(string: url) else {
+            completionHandler(nil, nil)
             return
         }
         
-        if NetworkState().isInternetAvailable == false {
-            completionHandler(nil, NSError.customError(with: 300, message: MessageConstants.NoInternet))
-            return
-        }
-                
-        manager.upload(multipartFormData: { (multiPartData) in
-            let reqParam = inputRequest.parameters ?? [String: Any]()
-            for (key, value) in reqParam {
-                print("\(key) :: \(value)")
-                multiPartData.append(((value as? String)?.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue), allowLossyConversion: false)!)!, withName: key)
+        var request = URLRequest(url: requestUrl,timeoutInterval: 60)
+        var components = URLComponents(url: requestUrl, resolvingAgainstBaseURL: false)!
+        
+        if let requestParam = param {
+            for key in requestParam.keys {
+                components.queryItems?.append(URLQueryItem(name: key, value: requestParam[key] as? String ?? ""))
             }
-        }, usingThreshold: SessionManager.multipartFormDataEncodingMemoryThreshold, with: inputRequest) { (encodingResult) in
-            switch encodingResult {
-            case .success(let upload, _, _):
-                upload.uploadProgress(closure: { (progress) in
-                    print(progress)
-                })
-                upload.responseData(completionHandler: { (response) in
-                    let result = response.result
-                    let error = result.error as NSError?
-                    
-                    if let responseData = response.data, let ascii = String(data: responseData, encoding: .ascii), let data = ascii.data(using: .utf8) {
-                        print("Response :: ", ascii)
-                        do {
-                            let decoder = JSONDecoder()
-                            let decodedValue = try decoder.decode(Model.self, from: data)
-                            completionHandler(decodedValue, nil)
-                        } catch let parsingError {
-                            completionHandler(nil, parsingError)
-                        }
-                    } else {
-                        completionHandler(nil, error)
-                    }
-                })
-            case .failure(let error):
+            let query = components.url!.query
+            request.httpBody = Data(query!.utf8)
+        }
+        
+        if let requestHeaders = headers {
+            for key in requestHeaders.keys {
+                request.addValue(requestHeaders[key] ?? "", forHTTPHeaderField: key)
+            }
+        }
+        
+        request.httpMethod = method
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let responseData = data else {
+                completionHandler(nil, error)
+                return
+            }
+            if let ascii = String(data: responseData, encoding: .ascii), let data = ascii.data(using: .utf8) {
+                print("Response :: ", ascii)
+                do {
+                    let decoder = JSONDecoder()
+                    let decodedValue = try decoder.decode(Model.self, from: data)
+                    completionHandler(decodedValue, nil)
+                } catch let parsingError {
+                    completionHandler(nil, parsingError)
+                }
+            } else {
                 completionHandler(nil, error)
             }
         }
+        task.resume()
     }
 }

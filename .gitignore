@@ -72,11 +72,6 @@ xcuserdata
 *.ipa
 
 ####
-# CocoaPods
-Pods/
-Podfile.lock
-
-####
 # Carthage
 Carthage/Build.rbenv-vars
 !Cartfile

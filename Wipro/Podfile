@@ -7,7 +7,7 @@ target 'Wipro' do
   # Pods for Wipro
 
   # Network Service
-  pod 'Alamofire', '~> 4.9.1'
+  #pod 'Alamofire', '~> 4.9.1'
 
   # Image Downlaod and Caching
   pod 'Kingfisher'
@@ -21,7 +21,7 @@ target 'Wipro' do
   target 'WiproTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'Alamofire', '~> 4.9.1'
+    #pod 'Alamofire', '~> 4.9.1'
     pod 'Kingfisher'
   end
 
